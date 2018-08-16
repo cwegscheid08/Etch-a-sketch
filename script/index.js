@@ -1,18 +1,16 @@
-const container = document.querySelector('#container');
+let content = document.querySelector("#container");
 
-const content = document.createElement('div');
-content.classList.add("content");
-content.textContent = "This is the glorious text-content!";
+function createDivs(row, columns) {
+	rows = createDivs.arguments[0];
+	columns = createDivs.arguments[1];
+	const box = document.createElement("div");
+	let grid;
+	for(i = 0; i <= +rows; i++) {
+		console.log(i);
+		//grid = box.repeat(i);
+	}
 
-let para = document.createElement("p");
-para.classList.add("para");
-para.textContent = "Hey I'm red!";
-para.style.color = "red";
+	content.appendChild('box');
+}
 
-container.appendChild(content);
-container.appendChild(para);
-
-
-
-
-//module.exports = helloWorld;
+//`module.exports = createDivs;
