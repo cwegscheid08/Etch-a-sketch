@@ -7,11 +7,13 @@ html {
 
 body {
     width: auto;
+    display: inline-block;
 }
 
 .container {
     height: 100%;
     width: auto;
+    
 }
 
 div.columns {
@@ -30,13 +32,7 @@ div.columns {
     background-color: white;
 }
 
-.hover {
-    background-color: grey;
-}
 
-.border {
-    border: solid black 1px;
-}
 
 #btn {
     position: relative;
@@ -46,6 +42,22 @@ div.columns {
 
 body .btn_container {
     width: 100%;
-    /* justify-self: center; */
-    /* align-self: center; */
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+
+
+/* RULES */
+
+
+.hover {
+    background-color: grey;
+}
+
+.border {
+    border: solid black 1px;
+    border-radius: 4px;
 }
