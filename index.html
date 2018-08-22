@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ETCH-A-SKETCH</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css">
-</head>
-<body>
-	<div class="btn_container">
-		<button id="btn">Reset</button>
-	</div>
-	<div id="container">
+    <head>
+        <title>ETCH-A-SKETCH</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+    </head>
+    <body>
+        <div class="btn_container">
+            
+            <form>
+                <p>Color Pen</p>
+                <input type="radio" id="toggle" class="on" name="rnbwToggle">
+                
+                <p>Grey Pen</p>
+                <input type="radio" id="toggle" class="off" name="rnbwToggle" checked>
 
-	</div>
-	<script type="text/javascript" src="script/index.js"></script>
-</body>
-<footer>
-	
-</footer>
+                <input type="text" id="gridInput" name="gridInput">
+
+                <input type="button" onclick="run(gridInput)" id="button">
+                
+            </form>
+        </div>
+        <div id="container"></div>
+        <script type="text/javascript" src="script/index.js"></script>
+    </body>
+    <footer></footer>
 </html>

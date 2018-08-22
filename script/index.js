@@ -1,7 +1,6 @@
 //STILL TO DO
 
-//MOVE BUTTON TO CENTER, REFORMAT THE LOOK OF THE BUTTON
-//DESIGN THE RANDOM COLOR SIMULATOR, INPUT IT AS A SEPERATE MODE WITH BUTTON
+//REFORMAT THE LOOK OF THE BUTTON
 //IMPLIMENT 10% OPACITY INCREASE ON EACH PASS OVER
 //FORMAT LOOK OF PAGE, POSSIBLY CLASSIC ETCH-A-SCETCH, OR MODERN APPLE DESIGN
 //MAYBE BLURRING THE EDGES OF THE DIV SQUARES WILL GIVE IT A PENCIL LOOK
@@ -9,137 +8,107 @@
 //DROP DOWN TO PICK SIZE??? OR A PERMANENT TEXT BOX
 //MAKE USER INPUT RESPONSIVE
 
-var grid;
-var btn = document.querySelector('button');
+var btn = document.getElementById(button);
+var container = document.getElementById('container');
+container.classList.add("border");
+var toggle = document.querySelectorAll('#toggle');
 
-//BUTTON IS TRANSFERING VALUE IN, BUT BOARD IS NOT STAYING LOADED WITHOUT BOTTOM FUNCTION CALL SET
+function run(x) {
 
-btn.addEventListener('click', ()=>{
-    //grid = prompt("How big ya lookin? 1-64");
-    //location.reload();
-    createDivs(grid, grid);
-}
-);
+    var x = run.arguments[0].value;
+    let createDivs = function() {
 
-function createDivs(row, columns) {
-    rows = createDivs.arguments[0];
-    columns = createDivs.arguments[1];
-    var container = document.querySelector("#container");
-    container.classList.add("border");
+        var num = createDivs.arguments[0];
 
-    // MIGHT NEED TO BE REFORMATTED
+        let buildGrid = function() {
+            num = buildGrid.arguments[0];
+            for (x = 0; x < +num; x++) {
+                const top = document.createElement("div");
+                container.appendChild(top);
+                top.classList.add("columns", "box");
+                for (i = 0; i <= +num; i++) {
+                    const box = document.createElement("div");
+                    box.classList.add("rows", "box");
+                    top.appendChild(box);
 
-    //POSSIBLY FIGURE INTO SINGLE FUNCTION TO CALL ON
-
-    //MAKE THE BUTTON START RUN() WHICH WILL BUILD THE 
-    //BOARD BASED ON THE SPECS OF A PROMPT/TEXTBOX.
-
-    for (x = 0; x < +columns; x++) {
-        const top = document.createElement("div");
-        container.appendChild(top);
-
-        for (i = 0; i <= +rows; i++) {
-            const box = document.createElement("div");
-            box.classList.add("rows", "box");
-            
-
-            box.addEventListener('mouseover', ()=>{
-                //box.classList.add("hover");
-
-                //box.style.color
-                var v = "";
-                let a = randomColor();
-
-                function randomColor() {
-                    let a = getNum();
-
-                    
-
-                    let red = v.slice(0, 3);
-                    let green = v.slice(3, 6);
-                    let blue = v.slice(6, 9);
-                    console.log(red);
-                    console.log(green);
-                    console.log(blue);
-                
-                    red = parseInt(red);
-                    blue = parseInt(blue);
-                    green = parseInt(green);
-                                        
-
-                    box.getAttribute('style', 'background-color: rgb('+red+', '+green+', '+blue+'))');
-
-                }
-
-                function getNum() {
-
-                    for (i = 1; i <= 9; i++) {
-                        var num = getN(i);
-                        var b;
-                        function getN(i) {
-                            let round = getN.arguments[0];
-                            b = Math.floor(Math.random() * 10);
-
-                            if (b >= 6) {
-                                getN(i);
-                            } else if (b < 3 && round === 1 || b < 3 && round === 4 || b < 3 && round === 7) {
-                                return b;
-                            } else if (b < 6 && +round != 1 && +round != 4 && +round != 7) {
-                                return b;
-                            } else {
-                                getN(i);
+                    box.addEventListener("mouseover", () => {
+                        
+                        let clr = toggle[0];
+                        let gry = toggle[1];
+                        var color = getColor();
+                        
+                        if (clr.checked == true) {
+                            box.style.backgroundColor = color;
+                        } else if (gry.checked == true) {
+                            box.style.backgroundColor = "grey";
+                        } 
+                    })
+                    /*box.addEventListener("mouseover", ()=>{
+                        
+                        switchColor();
+                        function switchColor() {
+                            let toggle = switchColor.arguments[0];
+                            if (rnbwToggle.checked === true) {
+                                box.style.backgroundColor = getColor();
+                            } else if (rnbwToggle.checked === false) {
+                                box.classList.add("hover");
                             }
-
-                            return b;
                         }
-
-                        v += b.toString();
-
-                        if (i === 9) {
-                            return v;
-                        }
-
                     }
-
+                    );*/
                 }
-
             }
-            )
-
-            /* function clr() {
-                    var num = getNum();
-                    var string = "Hello";
-                    return setColor();
-                    //var clr = setColor(string);
-
-                    function getNum(num) {
-                        num = Math.floor(Math.random() * 10);
-                        return num;
-                    }
-
-                    function setColor() {
-                        var clr = document.createElement('p');
-                        clr.textContent = string;
-                        clr.setAttribute("style", "color: green");
-                        return clr;
-
-                    }
-
-
-
-                }*/
-
-            btn.addEventListener('click', ()=>{
-                box.classList.remove("hover");
-            }
-            );
-
-            top.appendChild(box);
-
-            top.classList.add("columns", "box");
         }
 
+        buildGrid(num)
+    }
+
+    createDivs(x);
+
+}
+
+
+function getColor() {
+    var v = "";
+    var box = document.querySelector(".container");
+    return randomColor();
+
+    function randomColor() {
+        let a = getNum();
+        let red = parseInt(v.slice(0, 3));
+        let green = parseInt(v.slice(3, 6));
+        let blue = parseInt(v.slice(6, 9));
+        let rainbowEffect = "rgb(" + red + ", " + green + ", " + blue + ")";
+        //RAINBOW EFFECT LOG
+        //console.log(rainbowEffect);
+        return rainbowEffect;
+
+    }
+
+    function getNum() {
+
+        for (i = 1; i <= 9; i++) {
+            var num = getN(i);
+            var b;
+            function getN(i) {
+                let round = getN.arguments[0];
+                b = Math.floor(Math.random() * 10);
+
+                if (b >= 6) {
+                    getN(i);
+                } else if (b < 3 && round === 1 || b < 3 && round === 4 || b < 3 && round === 7) {
+                    return b;
+                } else if (b < 6 && +round != 1 && +round != 4 && +round != 7) {
+                    return b;
+                } else {
+                    getN(i);
+                }
+                return b;
+            }
+            v += b.toString();
+            if (i === 9) {
+                return v;
+            }
+        }
     }
 }
-createDivs(64, 64);
-//module.exports = createDivs;
