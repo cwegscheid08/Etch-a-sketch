@@ -12,6 +12,7 @@ var btn = document.getElementById(button);
 var container = document.getElementById('container');
 container.classList.add("border");
 var toggle = document.querySelectorAll('#toggle');
+var rtnOp = 0;
 
 function run(x) {
 
@@ -31,31 +32,24 @@ function run(x) {
                     box.classList.add("rows", "box");
                     top.appendChild(box);
 
-                    box.addEventListener("mouseover", () => {
-                        
+                    box.addEventListener("mouseover", ()=>{
+
                         let clr = toggle[0];
                         let gry = toggle[1];
                         var color = getColor();
-                        
+
                         if (clr.checked == true) {
                             box.style.backgroundColor = color;
+                            box.style.opacity = 1;
                         } else if (gry.checked == true) {
-                            box.style.backgroundColor = "grey";
-                        } 
-                    })
-                    /*box.addEventListener("mouseover", ()=>{
-                        
-                        switchColor();
-                        function switchColor() {
-                            let toggle = switchColor.arguments[0];
-                            if (rnbwToggle.checked === true) {
-                                box.style.backgroundColor = getColor();
-                            } else if (rnbwToggle.checked === false) {
-                                box.classList.add("hover");
-                            }
+                            box.style.backgroundColor = "black";
+                            let op = ((+box.style.opacity) + 0.1);
+                            box.style.opacity = op;
+
                         }
                     }
-                    );*/
+                    )
+
                 }
             }
         }
@@ -66,7 +60,6 @@ function run(x) {
     createDivs(x);
 
 }
-
 
 function getColor() {
     var v = "";
@@ -112,3 +105,5 @@ function getColor() {
         }
     }
 }
+
+

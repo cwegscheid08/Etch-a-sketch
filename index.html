@@ -3,25 +3,42 @@
     <head>
         <title>ETCH-A-SKETCH</title>
         <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet">
+
     </head>
     <body>
+        <div class="fill"></div>
+        <h1 id="heading">Etch-a-sketch</h1>
+        
         <div class="btn_container">
-            
-            <form>
-                <p>Color Pen</p>
-                <input type="radio" id="toggle" class="on" name="rnbwToggle">
-                
-                <p>Grey Pen</p>
-                <input type="radio" id="toggle" class="off" name="rnbwToggle" checked>
+            <form class="settings">
+                <div class="clr_pn dial set shadow">
+                    <p>Color Pen</p>
+                    <input type="radio" id="toggle" class="on border" name="rnbwToggle">
+                </div>
+                <div class="pencil dial set shadow">
+                    <p>Classic</p>
+                    <input type="radio" id="toggle" class="off border" name="rnbwToggle" checked>
+                </div>
 
-                <input type="text" id="gridInput" name="gridInput">
-
-                <input type="button" onclick="run(gridInput)" id="button">
-                
+                <div class="set">
+                    <div class="form">
+                        <input type="text" id="gridInput" class="border" name="gridInput">
+                    </div>
+                    <div class="btn">
+                        <input type="button" value="Submit Grid" onclick="run(gridInput)" class="border" id="button">
+                    </div>
+                    <div class="text">
+                        <p>Put the size of the grid you would like to draw on. Anything from 1 to 64.</p>
+                    </div>
+                </div>
             </form>
         </div>
+
+        
+
         <div id="container"></div>
         <script type="text/javascript" src="script/index.js"></script>
     </body>
-    <footer></footer>
+    
 </html>
